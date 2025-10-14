@@ -6,10 +6,34 @@ To install dependencies:
 bun install
 ```
 
-To run:
+To run dev:
 
 ```bash
-bun run index.ts
+bun run dev
+```
+
+To run build:
+
+```bash
+bun run build
+```
+
+To run start build:
+
+```bash
+bun run start
+```
+
+To run prisma migrate:
+
+```bash
+bun run migrate
+```
+
+To run prisma generate:
+
+```bash
+bun run prisma-generate
 ```
 
 This project was created using `bun init` in bun v1.2.19. [Bun](https://bun.com) is a fast all-in-one JavaScript runtime.
