@@ -1,5 +1,5 @@
 import fastify from "fastify";
-import { env } from "./plugins/env";
+import { env } from "./shared/plugins/env";
 import cors from "@fastify/cors";
 import fastifySwagger from "@fastify/swagger";
 import fastifySwaggerUI from "@fastify/swagger-ui";
@@ -7,12 +7,13 @@ import {
   jsonSchemaTransform,
   serializerCompiler,
   validatorCompiler,
+  type ZodTypeProvider,
 } from "fastify-type-provider-zod";
-import prismaPlugin from "./plugins/prisma";
-import { userRoutes } from "./routes/user";
-import { postRoutes } from "./routes/post";
+import prismaPlugin from "./shared/plugins/prisma";
+import { userRoutes } from "./routes/user.route";
+import { postRoutes } from "./routes/post.route";
 
-export const app = fastify();
+const app = fastify().withTypeProvider<ZodTypeProvider>();
 
 // Enable cors
 app.register(cors, {
