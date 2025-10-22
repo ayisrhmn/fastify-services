@@ -10,6 +10,7 @@ import {
   type ZodTypeProvider,
 } from "fastify-type-provider-zod";
 import prismaPlugin from "./shared/plugins/prisma";
+import loggerPlugin from "./shared/plugins/logger";
 import { userRoutes } from "./routes/user.route";
 import { postRoutes } from "./routes/post.route";
 
@@ -40,8 +41,9 @@ app.register(fastifySwaggerUI, {
 app.setValidatorCompiler(validatorCompiler);
 app.setSerializerCompiler(serializerCompiler);
 
-// Register prisma plugin
-app.register(prismaPlugin);
+// Register plugins
+app.register(prismaPlugin, { log: true });
+app.register(loggerPlugin);
 
 // Register routes
 app.register(userRoutes);
